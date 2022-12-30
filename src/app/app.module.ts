@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './store/card.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,7 @@ import { StoreModule } from '@ngrx/store';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ cart: cartReducer }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
