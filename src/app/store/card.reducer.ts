@@ -11,8 +11,8 @@ export const cart: Cart = {
 export function cartReducer(state = cart, action: CartAction) {
   switch (action.type) {
     case ActionTypes.Add: {
+      if (action.payload === undefined) return state;
       const newState = { ...state };
-      if (action.payload === undefined) return newState;
       newState.products = [...state.products, action.payload];
       newState.total = calculateTotal(newState.products);
       return newState;
@@ -20,9 +20,11 @@ export function cartReducer(state = cart, action: CartAction) {
 
     case ActionTypes.Remove: {
       if (action.payload === undefined) return state;
-      const index = state.products.indexOf(action.payload);
       const newState = { ...state };
-      newState.products.splice(index, 1);
+      const updatedProducts = newState.products.filter(
+        (product) => product !== action.payload
+      );
+      newState.products = updatedProducts;
       newState.total = calculateTotal(newState.products);
       return newState;
     }
