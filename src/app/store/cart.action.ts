@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Product } from '../models/product.model';
+import { Product } from '../interfaces/product.interface';
 
 export enum ActionTypes {
   Add = 'ADD',

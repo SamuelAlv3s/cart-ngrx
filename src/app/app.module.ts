@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { cartReducer } from './store/card.reducer';
+import { CartAction } from './interfaces/cart-action.interface';
 
 @NgModule({
   declarations: [AppComponent],
